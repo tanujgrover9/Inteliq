@@ -1,4 +1,3 @@
-// src/pages/NewChatScreen.tsx
 import React from "react";
 import { Box, Grid, Typography } from "@mui/material";
 import QuickCard from "../components/QuickCard";
@@ -38,7 +37,7 @@ const NewChatScreen: React.FC = () => {
       >
         <Typography
           variant="h4"
-          sx={{ fontWeight: 800, mb: 2, fontSize: { xs: 12, sm: 14, md: 18 } }}
+          sx={{ fontWeight: 800, mb: 2, fontSize: { xs: 12, sm: 18, md: 22 } }}
         >
           👋🏼 Hi Laurence!
         </Typography>

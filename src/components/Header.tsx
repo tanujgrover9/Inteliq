@@ -23,7 +23,7 @@ interface Props {
 
 const Header: React.FC<Props> = ({ onNewChat }) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const [model, setModel] = useState("GPT-4o mini");
+  const [, setModel] = useState("GPT-4o mini");
   const open = Boolean(anchorEl);
 
   const handleMenuOpen = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -57,7 +57,6 @@ const Header: React.FC<Props> = ({ onNewChat }) => {
         
         }}
       >
-        {/* Model selector */}
         <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
           <Button
             onClick={handleMenuOpen}
@@ -67,8 +66,8 @@ const Header: React.FC<Props> = ({ onNewChat }) => {
               display: "flex",
               alignItems: "center",
               color: "#111827",
-              fontWeight: 700,
-              fontSize: 17,
+              fontWeight: 400,
+              fontSize: 14,
               gap: 1,
               "&:hover": {
                 backgroundColor: "transparent",
@@ -102,7 +101,6 @@ const Header: React.FC<Props> = ({ onNewChat }) => {
           </Menu>
         </Box>
 
-        {/* Action buttons */}
         <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
           <Tooltip title="Share" arrow>
             <IconButton

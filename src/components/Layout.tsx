@@ -5,7 +5,6 @@ import ChatSidebar from "../components/Sidebar";
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [collapsed, setCollapsed] = useState(false);
 
-  // ✅ Toggle handler
   const handleToggleCollapse = () => {
     setCollapsed((prev) => !prev);
   };

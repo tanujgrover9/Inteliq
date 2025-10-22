@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import type { Message } from "../types";
 import { v4 as uuid } from "uuid";
-import  { saveMessages, loadMessages } from "../utils/storage";
+import { saveMessages, loadMessages } from "../utils/storage";
 
 interface ChatContextValue {
   messages: Message[];

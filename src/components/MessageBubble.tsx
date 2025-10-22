@@ -1,4 +1,3 @@
-// src/components/MessageBubble.tsx
 import React from "react";
 import { Paper, Typography, Box, Chip } from "@mui/material";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";

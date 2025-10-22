@@ -36,14 +36,14 @@ const App: React.FC = () => {
         backgroundColor: "#f7f8fa",
       }}
     >
-      {/* Sidebar */}
+      
       <Sidebar
         collapsed={sidebarCollapsed}
         onSelectConversation={onSelectConversation}
         onToggleCollapse={() => setSidebarCollapsed((s) => !s)}
       />
 
-      {/* Main Section */}
+     
       <Box
         sx={{
           flex: 1,
@@ -57,13 +57,11 @@ const App: React.FC = () => {
           transition: "margin 0.3s ease",
         }}
       >
-        {/* Sticky Header */}
         <Header
           onNewChat={() => startNew()}
           onToggleSidebar={() => setSidebarCollapsed((s) => !s)}
         />
 
-        {/* Dynamic Content */}
         <Box sx={{ flex: 1, overflowY: "auto" }}>
           {activeId ? (
             (() => {

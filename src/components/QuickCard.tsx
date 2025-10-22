@@ -14,8 +14,8 @@ const QuickCard: React.FC<Props> = ({ title, subtitle, onClick }) => {
       elevation={0}
       onClick={onClick}
       sx={{
-        width: { xs: "100%", sm: 220 }, 
-        height: { xs: 180, sm: 236 }, 
+        width: { xs: "92%", sm: 220 }, 
+        height: { xs: 180, sm: 220 }, 
         borderRadius: 4,
         border: "1px solid #e5e7eb",
         background:
@@ -88,7 +88,7 @@ const QuickCard: React.FC<Props> = ({ title, subtitle, onClick }) => {
               fontSize: { xs: 11, sm: 11.5 }, 
               mt: 0.5,
               lineHeight: 1.5,
-              fontWeight: "100 !important" ,
+              fontWeight: 100 ,
             }}
           >
             {subtitle}

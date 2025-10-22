@@ -15,11 +15,9 @@ import {
   Delete as DeleteIcon,
   ChevronRight as ChevronRightIcon,
 } from "@mui/icons-material";
-
 import { useChatStore } from "../store/chatStore";
 import type { Conversation } from "../types";
 
-// Local icons
 import LogoIcon from "../assets/icons/Group 5.png";
 import HomeIcon from "../assets/icons/chat-bubble-oval-left-ellipsis.png";
 import LibraryIcon from "../assets/icons/folder.png";
@@ -30,9 +28,11 @@ import SettingsIcon from "../assets/icons/chevron-up-down.png";
 import RocketIcon from "../assets/icons/Group 13.png";
 import UserAvatar from "../assets/icons/Picture.png";
 
-const Sidebar: React.FC<{ onSelectConversation: (id: string) => void }> = ({
-  onSelectConversation,
-}) => {
+interface SidebarProps {
+  onSelectConversation: (id: string) => void;
+}
+
+const Sidebar: React.FC<SidebarProps> = ({ onSelectConversation }) => {
   const convs = useChatStore((s) => s.conversations);
   const activeId = useChatStore((s) => s.activeConversationId);
   const deleteConversation = useChatStore((s) => s.deleteConversation);
@@ -40,7 +40,6 @@ const Sidebar: React.FC<{ onSelectConversation: (id: string) => void }> = ({
     (s) => s.updateConversationTitle
   );
 
-  // ✅ Sidebar open by default
   const [collapsed, setCollapsed] = useState(false);
   const [search, setSearch] = useState("");
   const [showAll, setShowAll] = useState(false);
@@ -48,7 +47,6 @@ const Sidebar: React.FC<{ onSelectConversation: (id: string) => void }> = ({
 
   const handleToggleCollapse = () => setCollapsed((prev) => !prev);
 
-  // Filter chats based on search
   const filtered = useMemo(() => {
     if (!search.trim()) return convs;
     const q = search.toLowerCase();
@@ -62,7 +60,6 @@ const Sidebar: React.FC<{ onSelectConversation: (id: string) => void }> = ({
   const visibleChats = showAll ? filtered : filtered.slice(0, 4);
   const hasMore = filtered.length > 4;
 
-  // Auto-update conversation title
   useEffect(() => {
     convs.forEach((c) => {
       if (c.messages.length && (!c.title || c.title === "New Chat")) {
@@ -97,10 +94,8 @@ const Sidebar: React.FC<{ onSelectConversation: (id: string) => void }> = ({
         height: "100vh",
         position: "relative",
         overflow: "hidden",
-        
       }}
     >
-      {/* Collapse Toggle Button */}
       <IconButton
         onClick={handleToggleCollapse}
         sx={{
@@ -203,9 +198,16 @@ const Sidebar: React.FC<{ onSelectConversation: (id: string) => void }> = ({
                   px: collapsed ? 1.2 : 2,
                   mb: 1,
                   justifyContent: collapsed ? "center" : "flex-start",
-                  backgroundColor: !collapsed && isActive ? "#fff" : "transparent",
-                  border: !collapsed && isActive ? "1px solid #E0E0E0" : "1px solid transparent",
-                  boxShadow: !collapsed && isActive ? "0 1px 3px rgba(0,0,0,0.05)" : "none",
+                  backgroundColor:
+                    !collapsed && isActive ? "#fff" : "transparent",
+                  border:
+                    !collapsed && isActive
+                      ? "1px solid #E0E0E0"
+                      : "1px solid transparent",
+                  boxShadow:
+                    !collapsed && isActive
+                      ? "0 1px 3px rgba(0,0,0,0.05)"
+                      : "none",
                   transition: "all 0.25s ease",
                 }}
               >
@@ -336,31 +338,41 @@ const Sidebar: React.FC<{ onSelectConversation: (id: string) => void }> = ({
         )}
       </Box>
 
-      {/* Try Pro Section */}
-      {!collapsed && (
-        <Box
-          sx={{
-            p: 1,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            gap: 1.5,
-            borderTop: "1px solid #e5e7eb",
-            background:
-              "conic-gradient(from 154.61deg at 80.43% -12.04%, #D9E4FF -93.6deg, #F8F9FC 42.55deg, #FFDDF8 157.8deg, #D9E4FF 266.4deg, #F8F9FC 402.55deg)",
-            borderRadius: 2,
-            mx: 2,
-          }}
-        >
-          <Box>
-            <Typography sx={{ fontWeight: 700 }}>Try Pro</Typography>
-            <Typography variant="caption" color="textSecondary">
-              Upgrade for smarter AI & more
-            </Typography>
-          </Box>
-          <Box component="img" src={RocketIcon} alt="Pro" width={22} height={22} />
-        </Box>
-      )}
+      {/*  Try Pro Section  */}
+      <Box
+        sx={{
+          p: 1,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: collapsed ? "center" : "space-between",
+          gap: 1.5,
+          borderTop: "1px solid #e5e7eb",
+          background:
+            "conic-gradient(from 154.61deg at 80.43% -12.04%, #D9E4FF -93.6deg, #F8F9FC 42.55deg, #FFDDF8 157.8deg, #D9E4FF 266.4deg, #F8F9FC 402.55deg)",
+          borderRadius: 2,
+          mx: 2,
+        }}
+      >
+        {collapsed ? (
+          <Typography sx={{ fontWeight: 700 }}>Try Pro!</Typography>
+        ) : (
+          <>
+            <Box>
+              <Typography sx={{ fontWeight: 700 }}>Try Pro!</Typography>
+              <Typography variant="caption" color="textSecondary">
+                Upgrade for smarter AI & more
+              </Typography>
+            </Box>
+            <Box
+              component="img"
+              src={RocketIcon}
+              alt="Pro"
+              width={22}
+              height={22}
+            />
+          </>
+        )}
+      </Box>
 
       {/* User Section */}
       <Box
@@ -377,10 +389,18 @@ const Sidebar: React.FC<{ onSelectConversation: (id: string) => void }> = ({
         }}
       >
         <Avatar src={UserAvatar} sx={{ width: 36, height: 36 }} />
-        {!collapsed && <Typography sx={{ fontWeight: 600 }}>Lawrence Cruz</Typography>}
+        {!collapsed && (
+          <Typography sx={{ fontWeight: 600 }}>Lawrence Cruz</Typography>
+        )}
         {!collapsed && (
           <IconButton size="small">
-            <Box component="img" src={SettingsIcon} alt="settings" width={18} height={18} />
+            <Box
+              component="img"
+              src={SettingsIcon}
+              alt="settings"
+              width={18}
+              height={18}
+            />
           </IconButton>
         )}
       </Box>
