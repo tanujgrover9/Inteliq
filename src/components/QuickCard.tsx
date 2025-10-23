@@ -14,7 +14,7 @@ const QuickCard: React.FC<Props> = ({ title, subtitle, onClick }) => {
       elevation={0}
       onClick={onClick}
       sx={{
-        width: "100%", // ✅ Let Grid control card width
+        width: "100%", 
         height: { xs: 160, sm: 190, md: 210 },
         borderRadius: 4,
         border: "1px solid #e5e7eb",
