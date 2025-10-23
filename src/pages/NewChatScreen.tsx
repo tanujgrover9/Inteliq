@@ -21,7 +21,7 @@ const NewChatScreen: React.FC = () => {
     <Box sx={{ display: "flex", flexDirection: "column", height: "100%" }}>
       <Box
         sx={{
-          px: { xs: 2, sm: 4, md: 10, lg: 18 }, // ✅ reduced padding for mid screens
+          px: { xs: 2, sm: 4, md: 10, lg: 18 }, 
           pt: { xs: 4, sm: 6, md: 8 },
           pb: 2,
         }}
