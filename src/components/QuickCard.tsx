@@ -14,8 +14,8 @@ const QuickCard: React.FC<Props> = ({ title, subtitle, onClick }) => {
       elevation={0}
       onClick={onClick}
       sx={{
-        width: { xs: "92%", sm: 220 }, 
-        height: { xs: 180, sm: 220 }, 
+        width: { xs: "92%", sm: "90%", md: 220 }, // ✅ smoother for tablet
+        height: { xs: 180, sm: 220 },
         borderRadius: 4,
         border: "1px solid #e5e7eb",
         background:
@@ -50,7 +50,7 @@ const QuickCard: React.FC<Props> = ({ title, subtitle, onClick }) => {
           justifyContent: "center",
           p: { xs: 0.6, sm: 1 },
           backgroundColor: "#fff",
-          width: { xs: 32, sm: 42 }, 
+          width: { xs: 32, sm: 42 },
           height: { xs: 32, sm: 42 },
           borderRadius: "50%",
           boxShadow: "inset 0 0 6px rgba(59,130,246,0.1)",
@@ -74,7 +74,7 @@ const QuickCard: React.FC<Props> = ({ title, subtitle, onClick }) => {
             fontWeight: 700,
             color: "#111827",
             lineHeight: 1.4,
-            fontSize: { xs: 10, sm: 12 }, 
+            fontSize: { xs: 10, sm: 12 },
           }}
         >
           {title}
@@ -85,10 +85,10 @@ const QuickCard: React.FC<Props> = ({ title, subtitle, onClick }) => {
             variant="body2"
             sx={{
               color: "#6b7280",
-              fontSize: { xs: 11, sm: 11.5 }, 
+              fontSize: { xs: 11, sm: 11.5 },
               mt: 0.5,
               lineHeight: 1.5,
-              fontWeight: 100 ,
+              fontWeight: 100,
             }}
           >
             {subtitle}
