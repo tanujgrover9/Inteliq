@@ -14,19 +14,18 @@ const QuickCard: React.FC<Props> = ({ title, subtitle, onClick }) => {
       elevation={0}
       onClick={onClick}
       sx={{
-        width: { xs: "90%", sm: "90%", md: 220 }, 
-        height: { xs: 180, sm: 210 },
+        width: "100%", // ✅ Let Grid control card width
+        height: { xs: 160, sm: 190, md: 210 },
         borderRadius: 4,
         border: "1px solid #e5e7eb",
         background:
           "conic-gradient(from 154.61deg at 80.43% -12.04%, #D9E4FF -93.6deg, #F8F9FC 42.55deg, #FFDDF8 157.8deg, #D9E4FF 266.4deg, #F8F9FC 402.55deg)",
-        position: "relative",
         cursor: "pointer",
         overflow: "hidden",
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
-        p: { xs: 1, sm: 2 },
+        p: { xs: 1.2, sm: 2 },
         boxShadow: "0 2px 6px rgba(0,0,0,0.04)",
         transition: "all 0.25s ease",
         "&:hover": {
@@ -74,7 +73,7 @@ const QuickCard: React.FC<Props> = ({ title, subtitle, onClick }) => {
             fontWeight: 700,
             color: "#111827",
             lineHeight: 1.4,
-            fontSize: { xs: 10, sm: 12 },
+            fontSize: { xs: 12, sm: 13 },
           }}
         >
           {title}
@@ -85,7 +84,7 @@ const QuickCard: React.FC<Props> = ({ title, subtitle, onClick }) => {
             variant="body2"
             sx={{
               color: "#6b7280",
-              fontSize: { xs: 11, sm: 11.5 },
+              fontSize: { xs: 11, sm: 12 },
               mt: 0.5,
               lineHeight: 1.5,
               fontWeight: 100,
