@@ -29,10 +29,16 @@ import RocketIcon from "../assets/icons/Group 13.png";
 import UserAvatar from "../assets/icons/Picture.png";
 
 interface SidebarProps {
+  collapsed: boolean;
   onSelectConversation: (id: string) => void;
+  onToggleCollapse: () => void;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ onSelectConversation }) => {
+const Sidebar: React.FC<SidebarProps> = ({
+  collapsed,
+  onSelectConversation,
+  onToggleCollapse,
+}) => {
   const convs = useChatStore((s) => s.conversations);
   const activeId = useChatStore((s) => s.activeConversationId);
   const deleteConversation = useChatStore((s) => s.deleteConversation);
@@ -40,12 +46,9 @@ const Sidebar: React.FC<SidebarProps> = ({ onSelectConversation }) => {
     (s) => s.updateConversationTitle
   );
 
-  const [collapsed, setCollapsed] = useState(false);
   const [search, setSearch] = useState("");
   const [showAll, setShowAll] = useState(false);
   const [activeNav, setActiveNav] = useState("Home");
-
-  const handleToggleCollapse = () => setCollapsed((prev) => !prev);
 
   const filtered = useMemo(() => {
     if (!search.trim()) return convs;
@@ -97,7 +100,7 @@ const Sidebar: React.FC<SidebarProps> = ({ onSelectConversation }) => {
       }}
     >
       <IconButton
-        onClick={handleToggleCollapse}
+        onClick={onToggleCollapse}
         sx={{
           position: "absolute",
           top: 28,
@@ -141,9 +144,7 @@ const Sidebar: React.FC<SidebarProps> = ({ onSelectConversation }) => {
           sx={{ width: 36, height: 36 }}
         />
         {!collapsed && (
-          <Typography sx={{ fontWeight: 700, fontSize: 26 }}>
-            Inteliq
-          </Typography>
+          <Typography sx={{ fontWeight: 700, fontSize: 26 }}>Inteliq</Typography>
         )}
       </Box>
 
@@ -338,7 +339,7 @@ const Sidebar: React.FC<SidebarProps> = ({ onSelectConversation }) => {
         )}
       </Box>
 
-      {/*  Try Pro Section  */}
+      {/* Try Pro Section */}
       <Box
         sx={{
           p: 1,
@@ -363,13 +364,7 @@ const Sidebar: React.FC<SidebarProps> = ({ onSelectConversation }) => {
                 Upgrade for smarter AI & more
               </Typography>
             </Box>
-            <Box
-              component="img"
-              src={RocketIcon}
-              alt="Pro"
-              width={22}
-              height={22}
-            />
+            <Box component="img" src={RocketIcon} alt="Pro" width={22} height={22} />
           </>
         )}
       </Box>

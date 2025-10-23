@@ -12,7 +12,7 @@ const App: React.FC = () => {
   const loadConversation = useChatStore((s) => s.loadConversation);
   const activeId = useChatStore((s) => s.activeConversationId);
   const convs = useChatStore((s) => s.conversations);
-  const [sidebarCollapsed, setSidebarCollapsed] = useState(true);
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
 
   useEffect(() => {
     init();
