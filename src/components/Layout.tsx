@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Box } from "@mui/material";
-import ChatSidebar from "../components/Sidebar";
+import Sidebar from "../components/Sidebar";
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [collapsed, setCollapsed] = useState(false);
@@ -22,7 +22,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
       }}
       className="app-frame"
     >
-      <ChatSidebar
+      <Sidebar
         collapsed={collapsed}
         onToggleCollapse={handleToggleCollapse}
         onSelectConversation={handleSelectConversation}

@@ -30,6 +30,7 @@ export const ChatProvider: React.FC<{ children: React.ReactNode }> = ({
       },
     ];
   });
+
   const [isIdle, setIsIdle] = useState(true);
 
   useEffect(() => {
@@ -44,12 +45,10 @@ export const ChatProvider: React.FC<{ children: React.ReactNode }> = ({
       text,
       createdAt: Date.now(),
     };
-    setMessages((m) => {
-      const mm = [...m, userMsg];
-      return mm;
-    });
+    setMessages((m) => [...m, userMsg]);
 
     setIsIdle(false);
+
     setTimeout(() => {
       const assistant: Message = {
         id: uuid(),

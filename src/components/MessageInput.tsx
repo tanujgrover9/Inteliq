@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import {
   Box,
   IconButton,
@@ -24,7 +24,6 @@ const MessageInput: React.FC = () => {
   const send = useChatStore((s) => s.sendMessage);
   const activeId = useChatStore((s) => s.activeConversationId);
   const startNewConversation = useChatStore((s) => s.startNewConversation);
-  const textareaRef = useRef<HTMLInputElement | null>(null);
 
   const MAX_MEDIA = 1000;
 
@@ -32,7 +31,7 @@ const MessageInput: React.FC = () => {
     if (!activeId) startNewConversation();
   }, [activeId, startNewConversation]);
 
-  const simulateUpload = (files: File[]) => {
+  const simulateUpload = (_files: File[]) => {
     setUploadProgress(0);
     let progress = 0;
 
