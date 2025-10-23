@@ -17,7 +17,7 @@ import chatGPT from "../assets/icons/images (10) (1).png";
 
 interface Props {
   onNewChat: () => void;
-  onToggleSidebar?: () => void; 
+  onToggleSidebar?: () => void;
 }
 
 const Header: React.FC<Props> = ({ onNewChat }) => {
@@ -43,8 +43,7 @@ const Header: React.FC<Props> = ({ onNewChat }) => {
         borderBottom: "1px solid #eceff4",
         backgroundColor: "#ffffff",
         borderTopLeftRadius: "20px",
-          borderTopRightRadius: "20px",
-   
+        borderTopRightRadius: "20px",
       }}
     >
       <Toolbar
@@ -52,11 +51,18 @@ const Header: React.FC<Props> = ({ onNewChat }) => {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          px: { xs: 1, sm: 3 },
-        
+          px: { xs: 1.5, sm: 3, md: 4 },
+          minHeight: { xs: 60, sm: 72 },
         }}
       >
-        <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
+        {/* Left: ChatGPT model selector */}
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            gap: 1,
+          }}
+        >
           <Button
             onClick={handleMenuOpen}
             endIcon={<ArrowDropDownIcon />}
@@ -65,15 +71,24 @@ const Header: React.FC<Props> = ({ onNewChat }) => {
               display: "flex",
               alignItems: "center",
               color: "#111827",
-              fontWeight: 400,
-              fontSize: 14,
+              fontWeight: 500,
+              fontSize: { xs: 13, sm: 14 },
               gap: 1,
               "&:hover": {
                 backgroundColor: "transparent",
               },
             }}
           >
-            <img src={chatGPT} alt="ChatGPT" width={22} height={22} />
+            <Box
+              component="img"
+              src={chatGPT}
+              alt="ChatGPT"
+              sx={{
+                width: 22,
+                height: 22,
+                borderRadius: "4px",
+              }}
+            />
             ChatGPT
           </Button>
 
@@ -93,14 +108,19 @@ const Header: React.FC<Props> = ({ onNewChat }) => {
             <MenuItem onClick={() => handleMenuClose("GPT-4o mini")}>
               GPT-4o mini
             </MenuItem>
-            <MenuItem onClick={() => handleMenuClose("GPT-4o")}>
-              GPT-4o
-            </MenuItem>
+            <MenuItem onClick={() => handleMenuClose("GPT-4o")}>GPT-4o</MenuItem>
             <MenuItem onClick={() => handleMenuClose("GPT-4")}>GPT-4</MenuItem>
           </Menu>
         </Box>
 
-        <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
+        {/* Right: Icons + New Chat button */}
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            gap: { xs: 0.5, sm: 1.5 },
+          }}
+        >
           <Tooltip title="Share" arrow>
             <IconButton
               size="medium"
@@ -133,8 +153,9 @@ const Header: React.FC<Props> = ({ onNewChat }) => {
               textTransform: "none",
               fontWeight: 600,
               borderRadius: "9999px",
-              px: 2.5,
-              py: 0.75,
+              px: { xs: 2, sm: 2.5 },
+              py: { xs: 0.5, sm: 0.75 },
+              fontSize: { xs: 13, sm: 14 },
               background: "linear-gradient(135deg, #2563eb 0%, #3b82f6 100%)",
               boxShadow: "0 2px 6px rgba(59,130,246,0.3)",
               "&:hover": {

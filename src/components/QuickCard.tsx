@@ -14,7 +14,7 @@ const QuickCard: React.FC<Props> = ({ title, subtitle, onClick }) => {
       elevation={0}
       onClick={onClick}
       sx={{
-        width: { xs: "92%", sm: "90%", md: 220 }, // ✅ smoother for tablet
+        width: { xs: "92%", sm: "90%", md: 220 }, 
         height: { xs: 180, sm: 220 },
         borderRadius: 4,
         border: "1px solid #e5e7eb",
